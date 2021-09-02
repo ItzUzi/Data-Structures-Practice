@@ -1,17 +1,17 @@
-public class Bag<T> implements BagInterface<T> {
+public class BagArray<T> implements BagInterface<T> {
 
     private T[] bag;
     private int numberOfEntries;
     private final int DEFAULT_CAPACITY = 25;
 
-    public Bag(int capacity){
+    public BagArray(int capacity){
         this.numberOfEntries = 0;
         @SuppressWarnings("unchecked")
         T[] tempBag = (T[])new Object[capacity];
         bag = tempBag;
     }
 
-    public Bag(){
+    public BagArray(){
         this.numberOfEntries = 0;
         @SuppressWarnings("unchecked")
         T[] tempBag = (T[])new Object[DEFAULT_CAPACITY];
