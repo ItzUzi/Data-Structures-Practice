@@ -95,7 +95,7 @@ public class BagArray<T> implements BagInterface<T> {
         if (isEmpty()) {
             return result;
         }
-        
+
         for (T t : bag) {
             if (t == anEntry) {
                 result = true;
@@ -106,11 +106,20 @@ public class BagArray<T> implements BagInterface<T> {
     }
 
     public T[] toArray() {
-        return null;
+        @SuppressWarnings("unchecked")
+        T[] result = (T[])new Object[numberOfEntries];
+
+        for (int i = 0; i < result.length; i++) {
+            result[i] = bag[i];
+        }
+
+        return result;
     }
 
     private boolean isArrayFull(){
+        if (numberOfEntries == bag.length - 1) {
+            return true;
+        }
         return false;
     }
-    
 }
