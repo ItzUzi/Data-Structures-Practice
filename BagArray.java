@@ -57,15 +57,28 @@ public class BagArray<T> implements BagInterface<T> {
     }
 
     public boolean remove(T anEntry) {
+       if (isEmpty()) {
+           return false;
+       }
+
+        for (int i = 0; i < bag.length; i++) {
+            if (anEntry == bag[i]) {
+                bag[i] = null;
+                numberOfEntries--;
+                return true;
+            }
+        }
         return false;
     }
 
     public void clear() {
-        
+       for (int i = 0; i < bag.length; i++) {
+           bag[i] = null;
+       }
     }
 
-    public boolean getFrequencyOf(T anEntry) {
-        return false;
+    public int getFrequencyOf(T anEntry) {
+        return 0;
     }
 
     public boolean contains(T anEntry) {

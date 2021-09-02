@@ -7,8 +7,9 @@ public class Test {
         else
             System.out.println("Add was not successful");
         
+        bag.clear();
+
         System.out.println(bag.remove());
-    
 
     }
 }

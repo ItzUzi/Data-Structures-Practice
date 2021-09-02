@@ -42,7 +42,7 @@ public interface BagInterface<T>{
      * @param anEntry
      * @return
      */
-    public boolean getFrequencyOf(T anEntry);
+    public int getFrequencyOf(T anEntry);
 
     /**
      * Tests whether bag contains given entry
