@@ -23,19 +23,37 @@ public class BagArray<T> implements BagInterface<T> {
     }
 
     public boolean isEmpty() {
+        if(bag.length == 0)
+            return true;
+
         for (T t : bag) {
-            if(t == null)
-                return true;
+            if(t != null)
+                return false;
         }
-        return false;
+        return true;
     }
 
     public boolean add(T newEntry) {
-        return false;
+        boolean result = true;
+        if(isArrayFull()){
+            result = false;
+        }else{
+            bag[numberOfEntries] = newEntry;
+            numberOfEntries++;
+        }
+        return result;
     }
 
     public T remove() {
-        return null;
+
+        if (isEmpty()) {
+            return null;
+        }else{
+            numberOfEntries--;
+            T temp = bag[numberOfEntries];
+            bag[numberOfEntries] = null;
+            return temp;
+        }
     }
 
     public boolean remove(T anEntry) {
