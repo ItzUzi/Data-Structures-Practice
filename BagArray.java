@@ -57,5 +57,9 @@ public class BagArray<T> implements BagInterface<T> {
     public T[] toArray() {
         return null;
     }
+
+    private boolean isArrayFull(){
+        return false;
+    }
     
 }
