@@ -7,9 +7,11 @@ public class Test {
         else
             System.out.println("Add was not successful");
         
-        bag.clear();
+        bag.add("Hello");
+        bag.add("Hi");
 
-        System.out.println(bag.remove());
-
+        if (bag.contains("Hello")) {
+            System.out.println("detects Hello!");
+        }
     }
 }

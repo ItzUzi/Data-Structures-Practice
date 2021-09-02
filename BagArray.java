@@ -78,11 +78,31 @@ public class BagArray<T> implements BagInterface<T> {
     }
 
     public int getFrequencyOf(T anEntry) {
-        return 0;
+        int counter = 0;
+        if (isEmpty()) {
+            return counter;
+        }
+        for (T t : bag) {
+            if (t == anEntry)
+                counter++;
+        }
+        return counter;
     }
 
     public boolean contains(T anEntry) {
-        return false;
+        boolean result = false;
+        
+        if (isEmpty()) {
+            return result;
+        }
+        
+        for (T t : bag) {
+            if (t == anEntry) {
+                result = true;
+            }
+        }
+
+        return result;
     }
 
     public T[] toArray() {
