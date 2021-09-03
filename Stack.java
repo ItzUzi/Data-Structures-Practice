@@ -23,9 +23,9 @@ public class Stack<T> {
             return null;
         }
 
+        numberOfEntries--;
         T results = stack[numberOfEntries];
         stack[numberOfEntries] = null;
-        numberOfEntries--;
 
         return results;
     }
@@ -50,7 +50,7 @@ public class Stack<T> {
             return null;
         }
 
-        T results = stack[numberOfEntries];
+        T results = stack[numberOfEntries - 1];
 
         return results;
     }
@@ -59,7 +59,7 @@ public class Stack<T> {
         if (isFull()) {
             reSize();
         }
-        
+
         stack[numberOfEntries] = anEntry;
         numberOfEntries++;
 
@@ -74,15 +74,12 @@ public class Stack<T> {
                 entryNumber = counter;
                 return entryNumber;
             }
-            counter++;
+            if (stack[i] != null) {
+                counter++;
+            }
         }
         // Returns 0 if OBJ is not in stack.
         return 0;
-    }
-
-    //Temp method
-    public int length(){
-        return stack.length;
     }
 
     private boolean isFull(){
