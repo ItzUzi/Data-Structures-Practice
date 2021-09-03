@@ -59,15 +59,37 @@ public class Stack<T> {
         if (isFull()) {
             reSize();
         }
+        
+        stack[numberOfEntries] = anEntry;
+        numberOfEntries++;
 
-        return null;
+        return anEntry;
+    }
+
+    public int search(T desiredEntry){
+        int counter = 1;
+        int entryNumber = 0;
+        for (int i = stack.length - 1; i >= 0; i--) {
+            if (stack[i] == desiredEntry){
+                entryNumber = counter;
+                return entryNumber;
+            }
+            counter++;
+        }
+        // Returns 0 if OBJ is not in stack.
+        return 0;
+    }
+
+    //Temp method
+    public int length(){
+        return stack.length;
     }
 
     private boolean isFull(){
 
         boolean results = false;
 
-        if (numberOfEntries == stack.length - 1) {
+        if (numberOfEntries == stack.length) {
             results = true;
         }
 
