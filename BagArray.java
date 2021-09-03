@@ -2,7 +2,7 @@ public class BagArray<T> implements BagInterface<T> {
 
     private T[] bag;
     private int numberOfEntries;
-    private final int DEFAULT_CAPACITY = 25;
+    private final static int DEFAULT_CAPACITY = 25;
 
     public BagArray(int capacity){
         this.numberOfEntries = 0;
@@ -12,10 +12,7 @@ public class BagArray<T> implements BagInterface<T> {
     }
 
     public BagArray(){
-        this.numberOfEntries = 0;
-        @SuppressWarnings("unchecked")
-        T[] tempBag = (T[])new Object[DEFAULT_CAPACITY];
-        bag = tempBag;
+        this(DEFAULT_CAPACITY);
     }
 
     public int getCurrentSize() {

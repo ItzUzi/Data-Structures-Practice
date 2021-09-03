@@ -1,14 +1,11 @@
 public class Stack<T> {
     
     private T[] stack;
-    private final int DEFAULT_CAPACITY = 25;
+    private final static int DEFAULT_CAPACITY = 25;
     private int numberOfEntries;
 
     Stack(){
-        @SuppressWarnings("unchecked")
-        T[] temp = (T[])new Object[DEFAULT_CAPACITY];
-        stack = temp;
-        numberOfEntries = 0;
+        this(DEFAULT_CAPACITY); 
     }
 
     Stack(int capacity){
