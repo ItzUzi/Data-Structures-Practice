@@ -13,5 +13,9 @@ public class Test {
         if (bag.contains("Hello")) {
             System.out.println("detects Hello!");
         }
+
+        Items item = new Items("Shopping Cart", 500.12);
+
+        System.out.println(item);
     }
 }
