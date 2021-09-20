@@ -56,35 +56,36 @@ public class BagArray<T> implements BagInterface<T> {
 
     public T remove() {
 
-        if (!isEmpty()) {
-            numberOfEntries--;
-            T temp = bag[numberOfEntries];
-            bag[numberOfEntries] = null;
-            return temp;
-        }
-
-        return null;
+        checkIntegrity();
+        T result = removeEntry(numberOfEntries-1);
+        return result;
     }
 
     public boolean remove(T anEntry) {
-       if (isEmpty()) {
-           return false;
-       }
+        checkIntegrity();
+        int index = getIndexOf(anEntry);
+        T result = removeEntry(index);
+        return anEntry.equals(result);
+    }
+
+    private int getIndexOf(T anEntry){
         for (int i = 0; i < bag.length; i++) {
             if (anEntry.equals(bag[i])) {
-                removeEntry(i);
-                return true;
+                return i;
             }
         }
-        return false;
+        return -1;
     }
 
     private T removeEntry(int givenIndex){
         T result = null;
+
+        if (!isEmpty() && givenIndex >= 0) {
         result = bag[givenIndex];
         numberOfEntries--;
         bag[givenIndex] = bag[numberOfEntries];
         bag[numberOfEntries] = null;
+        }
         return result;
     }
 
