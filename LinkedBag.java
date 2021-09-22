@@ -53,6 +53,11 @@ public class LinkedBag<T> implements BagInterface<T> {
         return result;
     }
 
+    /**
+     * Helper method for remove(T) method
+     * @param anEntry checks between nodes for reference for the entry
+     * @return The Node with reference to the entry
+     */
     private Node<T> getReferenceTo(T anEntry){
         boolean found = false;
         Node<T> currentNode = firstNode;
