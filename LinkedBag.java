@@ -1,6 +1,6 @@
 public class LinkedBag<T> implements BagInterface<T> {
 
-    private Node firstNode;
+    private Node<T> firstNode;
     private int numberOfEntries;
 
 
@@ -10,7 +10,7 @@ public class LinkedBag<T> implements BagInterface<T> {
     }
 
     public int getCurrentSize() {
-        return 0;
+        return numberOfEntries;
     }
 
     public boolean isEmpty() {
@@ -20,23 +20,51 @@ public class LinkedBag<T> implements BagInterface<T> {
 
     public boolean add(T newEntry) {
 
-        Node newNode = new Node(newEntry);
+        Node<T> newNode = new Node<T>(newEntry);
         newNode.setNextNode(firstNode);
         firstNode = newNode;
         numberOfEntries ++;
         return true;
     }
 
-    @Override
     public T remove() {
-        // TODO Auto-generated method stub
-        return null;
+        T result = null;
+        if (firstNode != null) {
+            result = firstNode.getData();
+            firstNode = firstNode.getNextNode();
+            numberOfEntries--;
+        }
+        return result;
     }
 
-    @Override
     public boolean remove(T anEntry) {
-        // TODO Auto-generated method stub
-        return false;
+        boolean result = false;
+        Node<T> nodeN = getReferenceTo(anEntry);
+
+        if (nodeN != null){
+            nodeN.setData(firstNode.getData());
+
+            firstNode = firstNode.getNextNode();
+
+            numberOfEntries--;
+            result = true;
+        }
+        
+        return result;
+    }
+
+    private Node<T> getReferenceTo(T anEntry){
+        boolean found = false;
+        Node<T> currentNode = firstNode;
+
+        while (!found && (currentNode != null)) {
+            if (anEntry.equals(currentNode.getData())) {
+                found = true;
+            }else
+                currentNode = currentNode.getNextNode();
+        }
+
+        return currentNode;
     }
 
     @Override
